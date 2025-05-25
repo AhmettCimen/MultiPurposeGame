@@ -18,10 +18,10 @@ startButton.style.transform = "translate(-50%, -50%)";
 startButton.style.padding = "20px 40px";
 startButton.style.fontSize = "24px";
 startButton.style.zIndex = "5";
-startButton.style.backgroundColor = "#8B4513"; 
-startButton.style.color = "white"; 
+startButton.style.backgroundColor = "#8B4513";
+startButton.style.color = "white";
 startButton.style.border = "none";
-startButton.style.borderRadius = "30px"; 
+startButton.style.borderRadius = "30px";
 startButton.style.cursor = "pointer";
 startButton.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.2)";
 startButton.style.transition = "transform 0.2s, box-shadow 0.2s";
@@ -447,7 +447,7 @@ function Character(
     } else if (status == "hitWitch") {
       c.drawImage(
         this.spriteSheet,
-        0, 
+        0,
         0,
         this.frameWidth,
         this.frameHeight,
@@ -491,7 +491,7 @@ function checkGameOver() {
           <p>Yeniden başlatmak için sayfayı yenileyin.</p>
       `;
     gameOverScreen.style.display = "block";
-    gameStarted = false; 
+    gameStarted = false;
   }
 }
 // hasConstantSpeed booleani sabit hareket eden nesnelerde true olur ve active keyi hareket sağlamaz
@@ -622,7 +622,8 @@ function createClickableImage() {
   );
 
   // yeni image objesi oluştur
-  const newImage = {  // sürekli ai modeller const oluşturmamı söylüyor nedenini anlayamadım
+  const newImage = {
+    // sürekli ai modeller const oluşturmamı söylüyor nedenini anlayamadım
     x: x,
     y: y,
     width: 50 * shieldScale,
@@ -651,7 +652,6 @@ canvas.addEventListener("click", function (event) {
       clickY >= img.y &&
       clickY <= img.y + img.height
     ) {
-     
       ClickableImageArray.splice(i, 1);
       shieldSound.currentTime = 0;
       shieldSound.play();
@@ -670,13 +670,12 @@ function updateClickableImages() {
     lastImageSpawn = currentTime;
   }
 
-  
   for (let i = ClickableImageArray.length - 1; i >= 0; i--) {
     const img = ClickableImageArray[i];
 
-   
-    if (currentTime - img.creationTime >= 15000) { // kalkan kayboklmasını general yapmak istiyorum zorluk eklemek için. Yetişmeyecek
-      
+    if (currentTime - img.creationTime >= 15000) {
+      // kalkan kayboklmasını general yapmak istiyorum zorluk eklemek için. Yetişmeyecek
+
       grayHeartCount--;
       shieldSound.currentTime = 0;
       shieldSound.play();
@@ -685,7 +684,6 @@ function updateClickableImages() {
   }
 }
 
-/
 var lastImageSpawn = Date.now();
 //
 
@@ -745,14 +743,12 @@ function updateBlueEnemies() {
     lastBlueEnemySpawn = Date.now();
   }
 
- 
   for (let i = EnemyCircleArrayBlue.length - 1; i >= 0; i--) {
     const enemy = EnemyCircleArrayBlue[i];
 
     enemy.dy = 0.2;
     enemy.y += enemy.dy;
 
-   
     c.drawImage(
       blueTarget,
       enemy.x - 25 * targetScale,
@@ -766,7 +762,6 @@ function updateBlueEnemies() {
     const distance = Math.sqrt(dx * dx + dy * dy); // burayı tam anlamadım ai dan yardım aldım
 
     if (distance < enemy.radius + CircleInBlue.radius) {
-     
       blueHeartCount--; // canı ilerde arttırısam burası değişcek
       EnemyCircleArrayBlue.splice(i, 1);
       continue;
@@ -794,12 +789,11 @@ function updateBlueEnemies() {
 var EnemyCircleArrayGreen = [];
 
 function createGreenEnemy() {
-  // green bölgenin alt sınırında random x 
+  // green bölgenin alt sınırında random x
   const randomX =
     Math.random() * (verticalBoxWidth - 60) + verticalBoxWidth + 30; // green bölge için x offset eklendi Çünkü eklediğim image ların zemini yüksek
-  const y = verticalBoxHeight; /
+  const y = verticalBoxHeight;
 
-  
   const enemy = new Circle(
     randomX,
     y,
@@ -809,13 +803,12 @@ function createGreenEnemy() {
     false
   );
 
- 
   enemy.force_y = -2 * g; // green de enemyler yukarı çıkıcağı için negatif hız
 
   EnemyCircleArrayGreen.push(enemy);
 }
 
-function updateGreenEnemies() { 
+function updateGreenEnemies() {
   if (!gameStarted) return;
 
   if (Date.now() - lastGreenEnemySpawn >= GreenEnemyCooldown) {
@@ -823,11 +816,9 @@ function updateGreenEnemies() {
     lastGreenEnemySpawn = Date.now();
   }
 
- 
   for (let i = EnemyCircleArrayGreen.length - 1; i >= 0; i--) {
     const enemy = EnemyCircleArrayGreen[i];
 
-    
     enemy.y -= 1.2 * enemy.dy;
     const dx = enemy.x - CircleInGreen.x;
     const dy = enemy.y - CircleInGreen.y;
@@ -841,14 +832,12 @@ function updateGreenEnemies() {
     );
 
     if (distance < enemy.radius + CircleInGreen.radius) {
-     
       greenHeartCount--;
-    
+
       EnemyCircleArrayGreen.splice(i, 1); // çarpışanı çıkart
       continue;
     }
 
-    
     if (enemy.y < 0) {
       EnemyCircleArrayGreen.splice(i, 1);
     }
@@ -992,7 +981,6 @@ function animate() {
   drawRightPartition();
   drawHearts();
 
-
   updateBlueEnemies();
   updateGreenEnemies();
 
@@ -1005,10 +993,7 @@ function animate() {
   for (let i = 0; i < EnemyCircleArrayGreen.length; i++) {
     EnemyCircleArrayGreen[i].draw(0, 0);
   }
-
-  
 }
-
 
 // green için create ve update
 //
@@ -1316,15 +1301,15 @@ function drawHearts() {
 
 var FireArray = [];
 
-var blueOffset = 50; 
-var greenOffset = -20; 
-var orangeOffset = 40; 
-var pinkOffset = 30; 
+var blueOffset = 50;
+var greenOffset = -20;
+var orangeOffset = 40;
+var pinkOffset = 30;
 function animate() {
   requestAnimationFrame(animate);
   c.clearRect(0, 0, innerWidth, innerHeight);
   char1idle.draw();
-  drawDivider(); 
+  drawDivider();
   drawLeftPartition();
   drawRightPartition();
   drawHearts(); // kalp çizdirme ama tekrr bakmam gerekiyo
@@ -1524,16 +1509,13 @@ function animate() {
 }
 
 function drawLeftPartition() {
-  
-  c.fillStyle = "#add8e6"; 
+  c.fillStyle = "#add8e6";
   c.fillRect(0, 0, verticalBoxWidth, verticalBoxHeight); // assetler yüklenene kadar idare ediyorlar
 
-  
-  c.fillStyle = "#90ee90"; 
+  c.fillStyle = "#90ee90";
   c.fillRect(verticalBoxWidth, 0, verticalBoxWidth, verticalBoxHeight);
 
-  
-  c.fillStyle = "#ffcccb"; 
+  c.fillStyle = "#ffcccb";
   c.fillRect(0, verticalBoxHeight, horizontalBoxWidth, horizontalBoxHeight);
 
   c.drawImage(blueBackground, 0, 0, verticalBoxWidth, verticalBoxHeight);
@@ -1553,10 +1535,9 @@ function drawLeftPartition() {
     horizontalBoxHeight
   );
 
-  c.strokeStyle = "#8B4513"; 
+  c.strokeStyle = "#8B4513";
   c.lineWidth = borderThickness;
 
-  
   c.strokeRect(
     borderThickness / 2,
     borderThickness / 2,
@@ -1564,7 +1545,6 @@ function drawLeftPartition() {
     verticalBoxHeight - borderThickness
   );
 
-  
   c.strokeRect(
     verticalBoxWidth + borderThickness / 2,
     borderThickness / 2,
@@ -1572,7 +1552,6 @@ function drawLeftPartition() {
     verticalBoxHeight - borderThickness
   );
 
-  
   c.strokeRect(
     borderThickness / 2,
     verticalBoxHeight + borderThickness / 2,
@@ -1581,7 +1560,7 @@ function drawLeftPartition() {
   );
 }
 
-// divider canvas widht e göre yarısını alarak ekranı ikiye bölüyor 
+// divider canvas widht e göre yarısını alarak ekranı ikiye bölüyor
 function drawDivider() {
   c.beginPath();
   c.moveTo(canvas.width / 2, 0);
@@ -1591,13 +1570,11 @@ function drawDivider() {
   c.stroke();
 }
 
-function drawRightPartition() { 
-  
-  c.fillStyle = "#e0e0e0"; 
+function drawRightPartition() {
+  c.fillStyle = "#e0e0e0";
   c.fillRect(canvas.width / 2, 0, rightWidth, canvasHeight);
 
-  
-  c.fillStyle = "#ffa500"; 
+  c.fillStyle = "#ffa500";
   c.fillRect(innerSquareX, innerSquareY, innerSquareSize, innerSquareSize);
   c.drawImage(grayBackground, canvas.width / 2, 0, rightWidth, canvasHeight);
   c.drawImage(
@@ -1614,7 +1591,7 @@ function drawRightPartition() {
     innerSquareSize,
     innerSquareSize
   );
-  c.strokeStyle = "#8B4513"; 
+  c.strokeStyle = "#8B4513";
   c.lineWidth = borderThickness;
 
   c.strokeRect(
@@ -1624,7 +1601,6 @@ function drawRightPartition() {
     canvasHeight - borderThickness
   );
 
-  
   c.strokeRect(
     innerSquareX + borderThickness / 2,
     innerSquareY + borderThickness / 2,
