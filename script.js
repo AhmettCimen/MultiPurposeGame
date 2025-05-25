@@ -252,9 +252,12 @@ document.addEventListener("keydown", function (event) {
     walkAnimationTimeStart = Date.now();
     d = true;
   }
-  if (event.code === "Space") {
+  if (event.code === "Space" && !spaceDown) {
     if (new Date() - lastHitTime > hitCooldownTime) {
       space = true;
+
+      spaceDown = true;
+
       fireSound.currentTime = 0; //
       fireSound.play();
       // space tuşuna basıldığında bir kez ateş edilecek last hit time ı değiştirebilirim sonra
@@ -285,6 +288,7 @@ document.addEventListener("keyup", function (event) {
     d = false;
   }
   if (event.code === "Space") {
+    spaceDown = false;
     CircleArray[3].canFire = true; // Ateş edebilen tek eleman 4. eleman bi değişiklik yapmam gerekirse CircleArrayi gezerek kontrol sağlayabilirim.
 
     space = false;
@@ -674,6 +678,8 @@ function updateClickableImages() {
     if (currentTime - img.creationTime >= 10000) {
       // 10 saniye geçti, can azalt ve image'ı sil
       grayHeartCount--;
+      shieldSound.currentTime = 0;
+      shieldSound.play();
       ClickableImageArray.splice(i, 1);
     }
   }
@@ -882,7 +888,7 @@ function updateOrangeEnemies() {
   for (let i = EnemyCircleArrayOrange.length - 1; i >= 0; i--) {
     const enemy = EnemyCircleArrayOrange[i];
 
-    enemy.dy = 0.05;
+    enemy.dy = -0.2;
     enemy.y += enemy.dy;
 
     c.drawImage(
@@ -1380,7 +1386,12 @@ function animate() {
         char4hit.draw();
       }
 
-      if (space && CircleArray[i].activeKey[j] == "Space") {
+      if (
+        space &&
+        CircleArray[i].activeKey[j] == "Space" &&
+        spaceDown &&
+        CircleArray[3].canFire
+      ) {
         if (Date.now() - lastHitTime > hitCooldownTime) {
           lastHitTime = Date.now();
           var newFire = new Fire(CircleArray[i].x, CircleArray[i].y);
