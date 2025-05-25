@@ -30,6 +30,53 @@ Tüm bu görevleri aynı anda yaparken, diğer ekranlardaki karakterlerinizi de 
 
 ---
 
+## ❓ Nasıl Oynanır
+
+Her bölgede farklı kontrollerle hayatta kalmalısın. Tüm bölgelerde eş zamanlı dikkatli ol!
+
+---
+
+### 🔹 1. Sol Üst Bölge – Kaçış (Yukarıdan Gelen Nesneler)
+
+- ⌨️ **Tuşlar:** `A` ve `D`
+- ⚠️ Yukarıdan gelen nesnelerden **kaç**!
+
+---
+
+### 🔹 2. Orta Sol Bölge – Kaçış (Aşağıdan Gelen Nesneler)
+
+- ⌨️ **Tuşlar:** `A` ve `D`
+- ⚠️ Aşağıdan gelen nesnelerden **kaç**!
+
+---
+
+### 🔹 3. Sol Alt Bölge – Zıplama ile Kaçış
+
+- ⌨️ **Tuş:** `W`
+- 🪂 Düşmanlardan **zıplayarak kaç**!
+
+---
+
+### 🔹 4. Sağ İç Bölge – Ateş Et
+
+- ⌨️ **Tuş:** `Space (Boşluk)`
+- 🎯 Düşmanlara ateş ederek **vur**!
+
+---
+
+### 🔹 5. Sağ Bölge – Kalkan Kırma
+
+- 🖱️ **Fare Tıklaması**
+- 🛡️ Beliren kalkanlara **tıkla ve kır**.
+- ⏳ 15 saniye içinde kırmazsan hasar alırsın!
+
+---
+
+### 🚨 Uyarı!
+
+- ❤️ Her bölgede **3 canın** var.
+- ☠️ Herhangi bir bölgede canın biterse **oyunu kaybedersin**.
+
 ## ⚙️ Teknolojiler
 
 - HTML5 (Canvas)
@@ -42,4 +89,43 @@ Tüm bu görevleri aynı anda yaparken, diğer ekranlardaki karakterlerinizi de 
 1. Bu linki URL ye yapıştırarak oyuna ulaşabilirsiniz.
    ```bash
    https://ahmettcimen.github.io/MultiPurposeGame/
+
+
    ```
+ ## 🎨 Kullanılan Assetler ve Kaynaklar
+
+Bu projede çeşitli açık kaynak ve ticari olmayan varlıklar kullanılmıştır. Tüm varlıklar eğitim ve demo amaçlıdır. Aşağıda kullanılan assetlerin listesi bulunmaktadır:
+
+---
+
+### 👾 Karakter ve Animasyon Paketleri
+
+- 🧙‍♂️ **Wizard Pack** – [Luiz Melo (itch.io)](https://luizmelo.itch.io/wizard-pack)  
+- 🛡️ **Medieval Fantasy Character Pack** – [Oco (itch.io)](https://oco.itch.io/medieval-fantasy-character-pack)  
+- ⚔️ **Warrior Free Animation Set** – [Clembod (itch.io)](https://clembod.itch.io/warrior-free-animation-set?download#google_vignette)
+
+---
+
+### ❤️ Oyun İçi Objeler
+
+- ❤️ **Can (Heart) Sembolü** – Minecraft'tan alınmıştır.  
+- 🔥 **Ateş Topu (Fireball)** – Minecraft görsel öğesi kullanılmıştır.
+
+---
+
+### 🎵 Müzik ve Ses Efektleri
+
+- 🎶 **"Rhodok Town"** – *Mount & Blade* Soundtrack  
+- 🎶 **"Vaegir Lord's Hall"** – *Mount & Blade: Warband* OST  
+- 🔊 **Ses Efektleri** – [uppbeat.io](https://uppbeat.io)
+
+---
+
+### 🖼️ Arka Planlar
+
+- Bazı arka planlar, görsel üretim sürecinde **ChatGPT** üzerinden AI destekli olarak oluşturulmuştur.
+
+---
+
+> 📌 Tüm içerikler yalnızca **kişisel, eğitimsel ve deneysel** projelerde kullanım amacıyla alınmıştır. Orijinal sahiplerine aittir. Ticari amaçla kullanılması önerilmez.
+
