@@ -115,7 +115,7 @@ howTo.innerHTML = `
         <p><strong>2. Sol Üst Bölge:</strong> A ve D tuşlarıyla hareket et, aşağıdan gelen nesnelerden kaç!</p>
         <p><strong>Sol Alt Bölge:</strong> W tuşuyla zıpla ve düşmanlardan kaç!</p>
         <p><strong>Sağ İç Bölge:</strong> Space tuşuyla ateş et ve düşmanları vur!</p>
-        <p><strong>Sağ Bölge:</strong> Beliren kalkanları mouse ile tıklayarak kır!</p>
+        <p><strong>Sağ Bölge:</strong> Beliren kalkanları mouse ile tıklayarak kır. Unutma! Kalkanlar 15 saniye içinde kırmazsan hasar veriyor!</p>
         <p><strong>Dikkat:</strong> Her bölgede 3 canın var, düşmanlara çarpmamaya çalış!</p>
     </div>
     <button onclick="this.parentElement.style.display='none'" style="
@@ -675,7 +675,7 @@ function updateClickableImages() {
     const img = ClickableImageArray[i];
 
     // 10 saniye geçti mi kontrol et
-    if (currentTime - img.creationTime >= 10000) {
+    if (currentTime - img.creationTime >= 15000) {
       // 10 saniye geçti, can azalt ve image'ı sil
       grayHeartCount--;
       shieldSound.currentTime = 0;
