@@ -18,10 +18,10 @@ startButton.style.transform = "translate(-50%, -50%)";
 startButton.style.padding = "20px 40px";
 startButton.style.fontSize = "24px";
 startButton.style.zIndex = "5";
-startButton.style.backgroundColor = "#8B4513"; // kahverengi (saddle brown)
-startButton.style.color = "white"; // yazı rengi
+startButton.style.backgroundColor = "#8B4513"; 
+startButton.style.color = "white"; 
 startButton.style.border = "none";
-startButton.style.borderRadius = "30px"; // yuvarlaklık
+startButton.style.borderRadius = "30px"; 
 startButton.style.cursor = "pointer";
 startButton.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.2)";
 startButton.style.transition = "transform 0.2s, box-shadow 0.2s";
@@ -323,7 +323,7 @@ function Character(
   frameCount,
   status
 ) {
-  // her karakter bir circle a sahip. Karakterlerin circleları collisionları , konumları , hareketleri barındırıyor. Sadece karakterin çizileceği konumu belirlemede rol oynuyor.
+  // her karakter bir circle a sahip. Karakterlerin circleları collisionları , konumları , hareketleri barındırıyor. Sadece karakterin çizileceği konumu belirlemede rol oynuyor. Tüm kodun temeilini bunun üzerine kurdum
   this.circle = circle;
   this.spriteSheet = spriteSheet;
   this.spriteSheetMirrored = spriteSheetMirrored;
@@ -336,7 +336,7 @@ function Character(
   this.status = status;
   this.lastFrameTime = 0;
   this.updateFrame = function () {
-    this.currentFrame = (this.currentFrame + 1) % this.frameCount; // örneğin 11 frame lik bir animasyonu göstericekse her 11 frame de bir başa dönmesi için
+    this.currentFrame = (this.currentFrame + 1) % this.frameCount; // örneğin 11 frame lik bir animasyonu göstericekse her 11 frame de bir başa dönmesi için mona göre modunu almam gerkiyor
   };
 
   this.draw = function () {
@@ -354,7 +354,7 @@ function Character(
     if (this.circle.isWalking) {
       if (this.circle.imgFaceDirection == -1) {
         c.drawImage(
-          this.spriteSheetMirrored, // spriteSheetin y ekseninne göre yansıtılmış hali , c.scale le yapınca bikaç bug oldu
+          this.spriteSheetMirrored, // spriteSheetin y ekseninne göre yansıtılmış hali , c.scale le yapınca bikaç bug oldu , bütün spriteSheetleri manuel olarak ayna görünüme çevierip yeni img neesneleri oluşturdum
 
           this.currentFrame * this.frameWidth,
           0,
@@ -447,7 +447,7 @@ function Character(
     } else if (status == "hitWitch") {
       c.drawImage(
         this.spriteSheet,
-        0, // jump sprite sheetinde tek bir frame var
+        0, 
         0,
         this.frameWidth,
         this.frameHeight,
@@ -491,7 +491,7 @@ function checkGameOver() {
           <p>Yeniden başlatmak için sayfayı yenileyin.</p>
       `;
     gameOverScreen.style.display = "block";
-    gameStarted = false; // Oyunu durdur
+    gameStarted = false; 
   }
 }
 // hasConstantSpeed booleani sabit hareket eden nesnelerde true olur ve active keyi hareket sağlamaz
@@ -603,13 +603,13 @@ var greyImage = new Image();
 greyImage.src = "images/shield.png"; // şimdilik magicBall kullanıyorum, istediğiniz image'ı koyabilirsiniz
 
 function createClickableImage() {
-  // Gri bölgenin sınırlarını hesapla (turuncu kare dışındaki sağ alan)
+  // grey bölgenin sınırları
   var minX = canvas.width / 2 + borderUzaklik;
   var maxX = canvas.width - borderUzaklik;
   var minY = borderUzaklik;
   var maxY = canvas.height - borderUzaklik;
 
-  // Turuncu karenin dışında rastgele konum seç
+  // turuncu karenin dışında ama greyin içinden bir alan seçim şilemi
   var x, y;
   do {
     x = Math.random() * (maxX - minX) + minX;
@@ -621,8 +621,8 @@ function createClickableImage() {
     y <= innerSquareY + innerSquareSize + innerSquareUzaklik
   );
 
-  // Yeni image objesi oluştur
-  const newImage = {
+  // yeni image objesi oluştur
+  const newImage = {  // sürekli ai modeller const oluşturmamı söylüyor nedenini anlayamadım
     x: x,
     y: y,
     width: 50 * shieldScale,
@@ -640,18 +640,18 @@ canvas.addEventListener("click", function (event) {
   const clickX = event.clientX - rect.left;
   const clickY = event.clientY - rect.top;
 
-  // Tüm imageleri kontrol et
+  // shield arrayi geziyor
   for (let i = ClickableImageArray.length - 1; i >= 0; i--) {
     const img = ClickableImageArray[i];
 
-    // Tıklama image üzerinde mi kontrol et
+    // shielda yakınssa tıklıyor
     if (
       clickX >= img.x &&
       clickX <= img.x + img.width &&
       clickY >= img.y &&
       clickY <= img.y + img.height
     ) {
-      // Image'a tıklandı, diziden çıkar
+     
       ClickableImageArray.splice(i, 1);
       shieldSound.currentTime = 0;
       shieldSound.play();
@@ -670,13 +670,13 @@ function updateClickableImages() {
     lastImageSpawn = currentTime;
   }
 
-  // Mevcut imageleri kontrol et
+  
   for (let i = ClickableImageArray.length - 1; i >= 0; i--) {
     const img = ClickableImageArray[i];
 
-    // 10 saniye geçti mi kontrol et
-    if (currentTime - img.creationTime >= 15000) {
-      // 10 saniye geçti, can azalt ve image'ı sil
+   
+    if (currentTime - img.creationTime >= 15000) { // kalkan kayboklmasını general yapmak istiyorum zorluk eklemek için. Yetişmeyecek
+      
       grayHeartCount--;
       shieldSound.currentTime = 0;
       shieldSound.play();
@@ -685,7 +685,7 @@ function updateClickableImages() {
   }
 }
 
-// Son image spawn zamanı
+/
 var lastImageSpawn = Date.now();
 //
 
@@ -725,7 +725,7 @@ function createBlueEnemy() {
   EnemyCircleArrayBlue.push(enemy);
 }
 
-// Targetlar için
+// targetlar için
 var blueTarget = new Image();
 blueTarget.src = "images/blueTarget.png";
 var greenTarget = new Image();
@@ -745,15 +745,14 @@ function updateBlueEnemies() {
     lastBlueEnemySpawn = Date.now();
   }
 
-  // Mevcut düşmanları güncelle
+ 
   for (let i = EnemyCircleArrayBlue.length - 1; i >= 0; i--) {
     const enemy = EnemyCircleArrayBlue[i];
 
-    // Düşmanı hareket ettir
     enemy.dy = 0.2;
     enemy.y += enemy.dy;
 
-    // Target'ı düşmanın konumunda çiz
+   
     c.drawImage(
       blueTarget,
       enemy.x - 25 * targetScale,
@@ -767,14 +766,13 @@ function updateBlueEnemies() {
     const distance = Math.sqrt(dx * dx + dy * dy); // burayı tam anlamadım ai dan yardım aldım
 
     if (distance < enemy.radius + CircleInBlue.radius) {
-      // Çarpışma gerçekleşti
-      blueHeartCount--;
-      // Çarpışan düşmanı sil
+     
+      blueHeartCount--; // canı ilerde arttırısam burası değişcek
       EnemyCircleArrayBlue.splice(i, 1);
       continue;
     }
 
-    // Eğer düşman bölgenin altına ulaştıysa sil
+    // eğer düşman bölgenin altına ulaştıysa sil
     if (enemy.y > verticalBoxHeight) {
       EnemyCircleArrayBlue.splice(i, 1);
     }
@@ -796,12 +794,12 @@ function updateBlueEnemies() {
 var EnemyCircleArrayGreen = [];
 
 function createGreenEnemy() {
-  // Green bölgenin alt sınırında random x pozisyonu
+  // green bölgenin alt sınırında random x 
   const randomX =
-    Math.random() * (verticalBoxWidth - 60) + verticalBoxWidth + 30; // Green bölge için x offset eklendi
-  const y = verticalBoxHeight; // Alt sınırdan başla
+    Math.random() * (verticalBoxWidth - 60) + verticalBoxWidth + 30; // green bölge için x offset eklendi Çünkü eklediğim image ların zemini yüksek
+  const y = verticalBoxHeight; /
 
-  // Yeni düşman oluştur
+  
   const enemy = new Circle(
     randomX,
     y,
@@ -811,13 +809,13 @@ function createGreenEnemy() {
     false
   );
 
-  // Düşmanın yukarı doğru hareket etmesi için
-  enemy.force_y = -2 * g; // Negatif hız ile yukarı hareket etsin
+ 
+  enemy.force_y = -2 * g; // green de enemyler yukarı çıkıcağı için negatif hız
 
   EnemyCircleArrayGreen.push(enemy);
 }
 
-function updateGreenEnemies() {
+function updateGreenEnemies() { 
   if (!gameStarted) return;
 
   if (Date.now() - lastGreenEnemySpawn >= GreenEnemyCooldown) {
@@ -825,11 +823,11 @@ function updateGreenEnemies() {
     lastGreenEnemySpawn = Date.now();
   }
 
-  // Mevcut düşmanları güncelle
+ 
   for (let i = EnemyCircleArrayGreen.length - 1; i >= 0; i--) {
     const enemy = EnemyCircleArrayGreen[i];
 
-    // Düşmanı hareket ettir
+    
     enemy.y -= 1.2 * enemy.dy;
     const dx = enemy.x - CircleInGreen.x;
     const dy = enemy.y - CircleInGreen.y;
@@ -843,14 +841,14 @@ function updateGreenEnemies() {
     );
 
     if (distance < enemy.radius + CircleInGreen.radius) {
-      // Çarpışma gerçekleşti
+     
       greenHeartCount--;
-      // Çarpışan düşmanı sil
-      EnemyCircleArrayGreen.splice(i, 1);
+    
+      EnemyCircleArrayGreen.splice(i, 1); // çarpışanı çıkart
       continue;
     }
 
-    // Eğer düşman bölgenin üstüne ulaştıysa sil
+    
     if (enemy.y < 0) {
       EnemyCircleArrayGreen.splice(i, 1);
     }
@@ -959,7 +957,7 @@ function updatePinkEnemies() {
 
     const dx = enemy.x - CircleInPink.x;
     const dy = enemy.y - CircleInPink.y;
-    const distance = Math.sqrt(dx * dx + dy * dy); // bu algoritmayı kurarken ai dan yardım aldım
+    const distance = Math.sqrt(dx * dx + dy * dy);
     c.drawImage(
       pinkTarget,
       enemy.x - 25 * targetScale,
@@ -983,7 +981,7 @@ function updatePinkEnemies() {
 }
 //
 //
-// Animate fonksiyonunda green düşmanları da güncelle ve çiz
+// Animate fonksiyonunda green düşmanları da güncelle ve tekrar çizdir
 
 function animate() {
   requestAnimationFrame(animate);
@@ -994,29 +992,29 @@ function animate() {
   drawRightPartition();
   drawHearts();
 
-  // Düşmanları güncelle ve çiz
+
   updateBlueEnemies();
   updateGreenEnemies();
 
-  // Blue düşmanları çiz
+  // blue düşmanları çiz
   for (let i = 0; i < EnemyCircleArrayBlue.length; i++) {
     EnemyCircleArrayBlue[i].draw(0, 0);
   }
 
-  // Green düşmanları çiz
+  // green düşmanları çiz
   for (let i = 0; i < EnemyCircleArrayGreen.length; i++) {
     EnemyCircleArrayGreen[i].draw(0, 0);
   }
 
-  // ... existing code ...
+  
 }
-// ... existing code ...
+
 
 // green için create ve update
 //
 //
 //
-//
+// çok ayrı bölümleri ayırmak için yorum satırı kullandım ide bazen boşlukları siliyor
 
 //spreadSheetleri imgleri burda tanımlıcam
 
@@ -1142,7 +1140,7 @@ CircleArray.push(CircleInPink);
 
 CircleArray.push(CircleInOrange);
 
-// hearth çizdirme
+// heart çizdirme
 var hearth = new Image();
 hearth.src = "images/heart.png";
 
@@ -1312,23 +1310,22 @@ function drawHearts() {
       c.drawImage(hearth, grayHeartX3, grayHeartY, 50, 50);
       break;
     default:
-      break;
+      break; // kalpleri tek tek hesaplamayınca sıkıntılar yaşadğığm için tek tek yazdım
   }
 }
 
 var FireArray = [];
 
-var blueOffset = 50; // blue bölgesinin offseti
-var greenOffset = -20; // green bölgesinin offseti
-var orangeOffset = 40; // orange bölgesinin offseti
-var pinkOffset = 30; // pink bölgesinin offseti
-
+var blueOffset = 50; 
+var greenOffset = -20; 
+var orangeOffset = 40; 
+var pinkOffset = 30; 
 function animate() {
   requestAnimationFrame(animate);
   c.clearRect(0, 0, innerWidth, innerHeight);
   char1idle.draw();
-  drawDivider(); // ortadaki dikey çizgi
-  drawLeftPartition(); // sol tarafı 3e böl
+  drawDivider(); 
+  drawLeftPartition();
   drawRightPartition();
   drawHearts(); // kalp çizdirme ama tekrr bakmam gerekiyo
   updateBlueEnemies();
@@ -1451,7 +1448,7 @@ function animate() {
       let yMin = 0,
         yMax = canvas.height;
 
-      // Rengine göre sınırları ayarla
+      // sınırlar renklere göer ayırldı. Renkler kodun temelinde var fakat en son üstlerine background ekledigim için gözükmyüyor yazarken işimi kolaylaştırdı
       switch (circle.borderColor) {
         case "Blue":
           xMin = 0;
@@ -1527,16 +1524,16 @@ function animate() {
 }
 
 function drawLeftPartition() {
-  // 1. Dikey Sol
-  c.fillStyle = "#add8e6"; // açık mavi
-  c.fillRect(0, 0, verticalBoxWidth, verticalBoxHeight);
+  
+  c.fillStyle = "#add8e6"; 
+  c.fillRect(0, 0, verticalBoxWidth, verticalBoxHeight); // assetler yüklenene kadar idare ediyorlar
 
-  // 2. Dikey Sağ
-  c.fillStyle = "#90ee90"; // açık yeşil
+  
+  c.fillStyle = "#90ee90"; 
   c.fillRect(verticalBoxWidth, 0, verticalBoxWidth, verticalBoxHeight);
 
-  // 3. Alt Yatay
-  c.fillStyle = "#ffcccb"; // açık kırmızı
+  
+  c.fillStyle = "#ffcccb"; 
   c.fillRect(0, verticalBoxHeight, horizontalBoxWidth, horizontalBoxHeight);
 
   c.drawImage(blueBackground, 0, 0, verticalBoxWidth, verticalBoxHeight);
@@ -1556,10 +1553,10 @@ function drawLeftPartition() {
     horizontalBoxHeight
   );
 
-  c.strokeStyle = "#8B4513"; // Kahverengi
+  c.strokeStyle = "#8B4513"; 
   c.lineWidth = borderThickness;
 
-  // Blue bölge çerçevesi
+  
   c.strokeRect(
     borderThickness / 2,
     borderThickness / 2,
@@ -1567,7 +1564,7 @@ function drawLeftPartition() {
     verticalBoxHeight - borderThickness
   );
 
-  // Green bölge çerçevesi
+  
   c.strokeRect(
     verticalBoxWidth + borderThickness / 2,
     borderThickness / 2,
@@ -1575,7 +1572,7 @@ function drawLeftPartition() {
     verticalBoxHeight - borderThickness
   );
 
-  // Pink bölge çerçevesi
+  
   c.strokeRect(
     borderThickness / 2,
     verticalBoxHeight + borderThickness / 2,
@@ -1584,7 +1581,7 @@ function drawLeftPartition() {
   );
 }
 
-// Ortadan bir çizgi çekerek canvas'ı görsel olarak ikiye bölebilirsin
+// divider canvas widht e göre yarısını alarak ekranı ikiye bölüyor 
 function drawDivider() {
   c.beginPath();
   c.moveTo(canvas.width / 2, 0);
@@ -1594,13 +1591,13 @@ function drawDivider() {
   c.stroke();
 }
 
-function drawRightPartition() {
-  // Dış kare (tam sağ yarı)
-  c.fillStyle = "#e0e0e0"; // gri ton
+function drawRightPartition() { 
+  
+  c.fillStyle = "#e0e0e0"; 
   c.fillRect(canvas.width / 2, 0, rightWidth, canvasHeight);
 
-  // İç kare (canvas yüksekliğinin yarısı)
-  c.fillStyle = "#ffa500"; // turuncu
+  
+  c.fillStyle = "#ffa500"; 
   c.fillRect(innerSquareX, innerSquareY, innerSquareSize, innerSquareSize);
   c.drawImage(grayBackground, canvas.width / 2, 0, rightWidth, canvasHeight);
   c.drawImage(
@@ -1617,10 +1614,9 @@ function drawRightPartition() {
     innerSquareSize,
     innerSquareSize
   );
-  c.strokeStyle = "#8B4513"; // Kahverengi
+  c.strokeStyle = "#8B4513"; 
   c.lineWidth = borderThickness;
 
-  // Gray bölge çerçevesi
   c.strokeRect(
     canvas.width / 2 + borderThickness / 2,
     borderThickness / 2,
@@ -1628,7 +1624,7 @@ function drawRightPartition() {
     canvasHeight - borderThickness
   );
 
-  // Orange bölge çerçevesi
+  
   c.strokeRect(
     innerSquareX + borderThickness / 2,
     innerSquareY + borderThickness / 2,
