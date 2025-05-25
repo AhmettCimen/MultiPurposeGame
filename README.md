@@ -13,22 +13,22 @@
 
 Her ekran farklı bir oyun türünü temsil eder:
 
--  **Kaçınma Bölgeleri:** Üzerinize gelen hedeflerden kaçarak hayatta kalmalısınız.
-![Kaçınma](example/dodge.png)
+- **Kaçınma Bölgeleri:** Üzerinize gelen hedeflerden kaçarak hayatta kalmalısınız.
+  ![Kaçınma](example/dodge.png)
 
 ---
 
--  **Saldırı Bölgesi:** Cadının asasını kullanarak üzerinize gelen hedefleri yere düşmeden önce yok etmelisiniz.
-![Saldırı](assets/attack.png)
+- **Saldırı Bölgesi:** Cadının asasını kullanarak üzerinize gelen hedefleri yere düşmeden önce yok etmelisiniz.
+  ![Saldırı](example/attack.png)
 
 ---
--  **Kırma Bölgeleri:** Karşınıza çıkan kalkanları kırarak onların size hasar vurmasını önlemelisiniz.
-  
+
+- **Kırma Bölgeleri:** Karşınıza çıkan kalkanları kırarak onların size hasar vurmasını önlemelisiniz.
+
 Tüm bu görevleri aynı anda yaparken, diğer ekranlardaki karakterlerinizi de kontrol etmeli ve hasar almamalarını sağlamalısınız.
-![Kırma](assets/break.png)
+![Kırma](example/break.png)
 
 ---
-
 
 ## ⚙️ Teknolojiler
 
@@ -42,4 +42,4 @@ Tüm bu görevleri aynı anda yaparken, diğer ekranlardaki karakterlerinizi de 
 1. Bu linki URL ye yapıştırarak oyuna ulaşabilirsiniz.
    ```bash
    https://ahmettcimen.github.io/MultiPurposeGame/
-
+   ```
