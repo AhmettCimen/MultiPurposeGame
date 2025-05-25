@@ -14,7 +14,7 @@
 Her ekran farklı bir oyun türünü temsil eder:
 
 - **Kaçınma Bölgeleri:** Üzerinize gelen hedeflerden kaçarak hayatta kalmalısınız.
-  ![Kaçınma](example/dodge.png)
+  ![Kaçınma](example/dodge2.png)
 
 ---
 
