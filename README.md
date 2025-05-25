@@ -34,6 +34,9 @@ Tüm bu görevleri aynı anda yaparken, diğer ekranlardaki karakterlerinizi de 
 
 Her bölgede farklı kontrollerle hayatta kalmalısın. Tüm bölgelerde eş zamanlı dikkatli ol!
 
+🎥 [Oynanış videosunu izlemek için tıkla](https://youtu.be/IRMG6fbRpGU)
+
+
 ---
 
 ### 🔹 1. Sol Üst Bölge – Kaçış (Yukarıdan Gelen Nesneler)
